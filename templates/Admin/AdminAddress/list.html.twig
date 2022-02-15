@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    {% for address in addresses %}
+        
+        {{ address.postCode}}
+        {{ address.city}}
+        {{ address.street}}
+        {{ address.number }}
+        {{ address.supplement}}
+
+
+    {% endfor %}
+
+{% endblock %}
