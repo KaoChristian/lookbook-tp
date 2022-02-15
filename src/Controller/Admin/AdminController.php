@@ -17,4 +17,6 @@ class AdminController extends AbstractController
     {
         return $this->render("Admin/Admin/dashboard.html.twig");
     }
+
+    
 }
