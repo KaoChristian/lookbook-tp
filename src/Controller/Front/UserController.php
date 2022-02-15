@@ -35,7 +35,7 @@ class UserController extends AbstractController
             $manager->persist($user);
             $manager->flush();
 
-            return $this->redirectToRoute("app_front_user_connexion");
+            return $this->redirectToRoute("app_admin_admin_dashboard");
         }
 
         return $this->render("Front/User/subscription.html.twig", [
