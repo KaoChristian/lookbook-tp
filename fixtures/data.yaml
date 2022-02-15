@@ -1,0 +1,11 @@
+App\Entity\User:
+  user:
+    email: user@mail.com
+    roles: ["ROLE_USER"]
+    # password : password
+    password: \$2y\$13\$4nFdXU0byci3BWK1YwEopOrkJHJ0ShdIq9B9fmucjiL5dM9cy15Wy
+  admin:
+    email: admin@mail.com
+    roles: ["ROLE_ADMIN"]
+    # password : password
+    password: \$2y\$13\$4nFdXU0byci3BWK1YwEopOrkJHJ0ShdIq9B9fmucjiL5dM9cy15Wy
