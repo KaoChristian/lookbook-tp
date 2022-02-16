@@ -29,7 +29,8 @@ class AddressType extends AbstractType
                 'label' => 'Numéro de rue :'
             ])
             ->add('supplement', TextType::class, [
-                'label' => 'Complément d\'adresse :'
+                'label' => 'Complément d\'adresse :',
+                'required' => false,
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider'

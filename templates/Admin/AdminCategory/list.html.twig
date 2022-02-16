@@ -1,20 +1,26 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
+<h1>Catégories</h1>
+
+<button><a href="{{ path('app_admin_adminCategory_create') }}">Ajouter</a></button>
+
+    <table>
+        <tr>
+            <th>Nom</th>
+            <th>Actions</th>
+        </tr>
     
-    {% for address in addresses %}
-    
-        <ul>
-            {% for user in address.users %}
-                <li>{{ user.email }}</li>
-            {% endfor %}
-            <li>{{ address.postCode}}</li>
-            <li>{{ address.city}}</li>
-            <li>{{ address.street}}</li>
-            <li>{{ address.number }}</li>
-            <li>{{ address.supplement}}</li>
-        </ul>
+    {% for category in categories %}
+        <tr>
+            <td>{{ category.title}}</td>
+            <td>
+                <button><a href="{{ path('app_admin_adminCategory_update', {'id':category.id}) }}">Modifier</a></button>
+                <button><a href="{{ path('app_admin_adminCategory_delete', {'id':category.id}) }}">Supprimer</a></button> 
+            </td>
+        </tr>
 
     {% endfor %}
+    </table>
 
 {% endblock %}
