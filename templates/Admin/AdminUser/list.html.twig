@@ -1,10 +1,47 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
+<h1>Utilisateurs</h1>
 
+<button><a href="{{ path('app_admin_adminUser_create') }}">Ajouter</a></button>
+
+    <table>
+        <tr>
+            <th>Email</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Adresses</th>
+            <th>Pseudo</th>
+            <th>Livres</th>
+            <th>Actions</th>
+        </tr>
+    
     {% for user in users %}
-        
-        <p>Email utilisateur : {{ user.email }} </p>
-    {% endfor %}
+        <tr>
 
+            <td>{{ user.email }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>
+            {% for address in user.addresses %}
+                {{ address.number }} {{ address.street }}
+                <br>
+                {{ address.postCode }} {{ address.city }}
+                <br>
+            {% endfor %}
+            </td>
+            <td>{{ user.userName }}</td>
+            <td>
+            {% for book in user.books %}
+                {{ book.title }}
+                {{ book.price }}
+            {% endfor %}
+            <td>
+                <button><a href="{{ path('app_admin_adminAuthor_update', {'id':user.id}) }}">Modifier</a></button>
+                <button><a href="{{ path('app_admin_adminAuthor_delete', {'id':user.id}) }}">Supprimer</a></button> 
+            </td>
+        </tr>
+
+    {% endfor %}
+    </table>
 {% endblock %}

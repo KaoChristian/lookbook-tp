@@ -32,6 +32,14 @@ class UserType extends AbstractType
                 'label' => 'Adresse :',
                 'required' => false
             ])
+            ->add('firstName', TextType::class, [
+                'label' => 'Prénom :',
+                'required' => false
+            ])
+            ->add('lastName', TextType::class, [
+                'label' => 'Nom :',
+                'required' => false
+            ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider'
             ])

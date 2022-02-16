@@ -1,20 +1,28 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
+<h1>Editeurs</h1>
+
+<button><a href="{{ path('app_admin_adminPublisher_create') }}">Ajouter</a></button>
+
+    <table>
+        <tr>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
     
-    {% for address in addresses %}
-    
-        <ul>
-            {% for user in address.users %}
-                <li>{{ user.email }}</li>
-            {% endfor %}
-            <li>{{ address.postCode}}</li>
-            <li>{{ address.city}}</li>
-            <li>{{ address.street}}</li>
-            <li>{{ address.number }}</li>
-            <li>{{ address.supplement}}</li>
-        </ul>
+    {% for author in publishers %}
+        <tr>
+
+            <td>{{ author.title }}</td>
+            <td>{{ author.description }}</td>
+            <td>
+                <button><a href="{{ path('app_admin_adminPublisher_update', {'id':author.id}) }}">Modifier</a></button>
+                <button><a href="{{ path('app_admin_adminPublisher_delete', {'id':author.id}) }}">Supprimer</a></button> 
+            </td>
+        </tr>
 
     {% endfor %}
-
+    </table>
 {% endblock %}

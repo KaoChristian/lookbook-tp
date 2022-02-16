@@ -1,20 +1,55 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
+<h1>Livres</h1>
+
+<button><a href="{{ path('app_admin_adminBook_create') }}">Ajouter</a></button>
+
+    <table>
+        <tr>
+            <th>Titre</th>
+            <th>Auteurs</th>
+            <th>Editeur</th>
+            <th>Prix</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Date de publication</th>
+            <th>ISBN</th>
+            <th>Catégorie</th>
+            <th>Nb page</th>
+            <th>Langue</th>
+            <th>Format</th>
+            <th>Actions</th>
+        </tr>
     
-    {% for address in addresses %}
-    
-        <ul>
-            {% for user in address.users %}
-                <li>{{ user.email }}</li>
+    {% for book in books %}
+        <tr>
+            <td>{{ book.title}}</td>
+            <td>
+            {% for author in book.authors %}
+                {{ author.name }}
             {% endfor %}
-            <li>{{ address.postCode}}</li>
-            <li>{{ address.city}}</li>
-            <li>{{ address.street}}</li>
-            <li>{{ address.number }}</li>
-            <li>{{ address.supplement}}</li>
-        </ul>
+            </td>
+            <td>{{ book.publisher.title }}</td>         
+            <td>{{ book.price }}</td>
+            <td>{{ book.images }}</td>
+            <td>{{ book.description }}</td>
+            <td>{{ book.publishDate|date("d/m/Y") }}</td>
+            <td>{{ book.isbn }}</td>
+            <td>
+            {% for category in book.categories %}
+                {{ category.title }}
+            {% endfor %}
+            </td>  
+            <td>{{ book.pageAmount }}</td>
+            <td>{{ book.language }}</td>
+            <td>{{ book.bookSize }}</td>
+            <td>
+                <button><a href="{{ path('app_admin_adminBook_update', {'id':book.id}) }}">Modifier</a></button>
+                <button><a href="{{ path('app_admin_adminBook_delete', {'id':book.id}) }}">Supprimer</a></button> 
+            </td>
+        </tr>
 
     {% endfor %}
-
+    </table>
 {% endblock %}
