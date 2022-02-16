@@ -52,5 +52,5 @@ App\Entity\Book:
     isbn: "<isbn13()>"
     categories: "<numberBetween(1, 2)>x @category*"
     pageAmount: "<numberBetween(5, 1000)>"
-    langue: "<word()>"
+    language: "<word()>"
     bookSize: "<word()>"

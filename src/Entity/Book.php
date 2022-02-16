@@ -48,7 +48,7 @@ class Book
     private $pageAmount;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $langue;
+    private $language;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $bookSize;
@@ -208,14 +208,14 @@ class Book
         return $this;
     }
 
-    public function getLangue(): ?string
+    public function getLanguage(): ?string
     {
-        return $this->langue;
+        return $this->language;
     }
 
-    public function setLangue(?string $langue): self
+    public function setLanguage(?string $language): self
     {
-        $this->langue = $langue;
+        $this->language = $language;
 
         return $this;
     }
