@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    
+    {% for address in addresses %}
+    
+        <ul>
+            {% for user in address.users %}
+                <li>{{ user.email }}</li>
+            {% endfor %}
+            <li>{{ address.postCode}}</li>
+            <li>{{ address.city}}</li>
+            <li>{{ address.street}}</li>
+            <li>{{ address.number }}</li>
+            <li>{{ address.supplement}}</li>
+        </ul>
+
+    {% endfor %}
+
+{% endblock %}
