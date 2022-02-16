@@ -25,3 +25,32 @@ App\Entity\Address:
     number: 87
     supplement: "Appartement 7"
     users: ["@admin"]
+
+App\Entity\Author:
+  author{1..10}:
+    name: "<word()>"
+    description: "<sentence(2)>"
+
+App\Entity\Publisher:
+  publisher{1..10}:
+    title: "<word()>"
+    description: "<sentence(2)>"
+
+App\Entity\Category:
+  category{1..5}:
+    title: "<word()>"
+
+App\Entity\Book:
+  book{1..20}:
+    title: "<word()>"
+    authors: "<numberBetween(1, 2)>x @author*"
+    publisher: "@publisher*"
+    price: "<randomFloat(2, 0, 999)>"
+    images: "<imageUrl(150, 150, 'book')>"
+    description: "<paragraph()>"
+    publishDate: "<date_create()>"
+    isbn: "<isbn13()>"
+    categories: "<numberBetween(1, 2)>x @category*"
+    pageAmount: "<numberBetween(5, 1000)>"
+    langue: "<word()>"
+    bookSize: "<word()>"
