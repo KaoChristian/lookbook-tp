@@ -25,6 +25,7 @@ class AdminAddressController extends AbstractController
     public function list(AddressRepository $repository): Response
     {
         $addresses = $repository->findAll();
+        
 
         return $this->render('Admin/AdminAddress/list.html.twig', [
             'addresses' => $addresses,

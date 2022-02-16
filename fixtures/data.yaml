@@ -9,3 +9,19 @@ App\Entity\User:
     roles: ["ROLE_ADMIN"]
     # password : password
     password: \$2y\$13\$4nFdXU0byci3BWK1YwEopOrkJHJ0ShdIq9B9fmucjiL5dM9cy15Wy
+
+App\Entity\Address:
+  Address1:
+    postCode: 75000
+    city: "Paris"
+    street: "Allee de voila"
+    number: 01
+    supplement: "En haut tu vois de quoi je parle"
+    users: ["@user"]
+  Address2:
+    postCode: 75000
+    city: "Paris"
+    street: "Allee de ici"
+    number: 87
+    supplement: "Appartement 7"
+    users: ["@admin"]
