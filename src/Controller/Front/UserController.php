@@ -42,4 +42,23 @@ class UserController extends AbstractController
             "form" => $form->createView()
         ]);
     }
+
+    /**
+     * @IsGranted("ROLE_USER")
+     */
+    /**
+     * @Route("/mon-profil", name="app_front_user_profile")
+     */
+    public function profile(): Response
+    {
+        $user = $this->getUser();
+
+        if($user==null) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        return $this->render('Front/User/profile.html.twig', [
+            'user' => $user,
+        ]);
+    }
 }

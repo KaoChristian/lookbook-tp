@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h2>Mon Profil</h2>
+    <br>
+    <h3>Mes informations</h3>
+    <ul>
+        <li>Pseudo : {{ user.userName }}</li>
+        <li>Mail : {{ user.email }}</li>
+        <li>Nom : {{ user.lastName }}</li>
+        <li>Prénom : {{ user.firstName }}</li>
+    </ul>
+
+    <h3>Mes adresses</h3>
+        <button><a {# href="{{ path('') }}" #}>Nouvelle Adresse</a>
+        </button>
+    <ul>
+        {% for address in user.addresses %}
+        <li>{{ address.number }} {{ address.street }}<br>{{ address.postCode }} {{ address.city }}<br><button><a {# href="{{ path('', {'id':adress.id}) }}" #}>Modif</a></button><button><a {# href="{{ path('#', {'id':adress.id}) }}"#}>Suppr</a></button> </li>
+        {% endfor %}
+    </ul>
+
+    <hr>
+    <h3>Mes Livres</h3>
+    <button><a {# href="{{ path('') }}" #}>Ajouter un livre</a></button>
+    <table>
+        <tr>
+            <th>Titre</th>
+            <th>Auteur</th>
+            <th>Editeur</th>
+            <th>Prix</th>
+            <th>Actions</th>
+        </tr>
+        
+        {% for book in user.books %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.publisher }}</td>
+            <td>{{ book.price }}</td>
+            <td>
+                <button><a {# href="{{ path('', {'id':book.id}) }}" #}>Modifier</a></button>
+                <button><a {# href="{{ path('', {'id':book.id}) }}" #}>Supprimer</a></button> 
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -18,7 +18,6 @@
     
     {% for user in users %}
         <tr>
-
             <td>{{ user.email }}</td>
             <td>{{ user.lastName }}</td>
             <td>{{ user.firstName }}</td>
@@ -41,7 +40,6 @@
                 <button><a href="{{ path('app_admin_adminAuthor_delete', {'id':user.id}) }}">Supprimer</a></button> 
             </td>
         </tr>
-
     {% endfor %}
     </table>
 {% endblock %}
