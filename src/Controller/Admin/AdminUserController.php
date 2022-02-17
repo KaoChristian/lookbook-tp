@@ -20,7 +20,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminUserController extends AbstractController
 {
     /**
-     * @Route("/admin/user/liste", name="app_admin_adminUser_list")
+     * @Route("/admin/utilisateurs", name="app_admin_adminUser_list")
      */
     public function list(UserRepository $repository): Response
     {
@@ -32,7 +32,7 @@ class AdminUserController extends AbstractController
     }
 
     /**
-     * @Route("/admin/user/creer", name="app_admin_adminUser_create")
+     * @Route("/admin/utilisateurs/creer", name="app_admin_adminUser_create")
      */
     public function create(Request $request, EntityManagerInterface $manager): Response
     {
@@ -53,7 +53,7 @@ class AdminUserController extends AbstractController
     }
 
     /**
-     * @Route("/admin/user/modifier/{id}", name="app_admin_adminUser_update")
+     * @Route("/admin/utilisateurs/modifier/{id}", name="app_admin_adminUser_update")
      */
     public function update(User $user, EntityManagerInterface $manager, Request $request): Response
     {
@@ -73,7 +73,7 @@ class AdminUserController extends AbstractController
     }
 
     /**
-     * @Route("/admin/user/supprimer/{id}", name="app_admin_adminUser_delete")
+     * @Route("/admin/utilisateurs/supprimer/{id}", name="app_admin_adminUser_delete")
      */
     public function delete(User $user, EntityManagerInterface $manager): Response
     {

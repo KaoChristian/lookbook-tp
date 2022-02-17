@@ -20,7 +20,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminAuthorController extends AbstractController
 {
     /**
-     * @Route("/admin/author/liste", name="app_admin_adminAuthor_list")
+     * @Route("/admin/auteurs", name="app_admin_adminAuthor_list")
      */
     public function list(AuthorRepository $repository): Response
     {
@@ -33,7 +33,7 @@ class AdminAuthorController extends AbstractController
     }
 
     /**
-     * @Route("/admin/author/creer", name="app_admin_adminAuthor_create")
+     * @Route("/admin/auteurs/creer", name="app_admin_adminAuthor_create")
      */
     public function create(Request $request, EntityManagerInterface $manager): Response
     {
@@ -54,7 +54,7 @@ class AdminAuthorController extends AbstractController
     }
 
     /**
-     * @Route("/admin/author/modifier/{id}", name="app_admin_adminAuthor_update")
+     * @Route("/admin/auteurs/modifier/{id}", name="app_admin_adminAuthor_update")
      */
     public function update(Author $author, EntityManagerInterface $manager, Request $request): Response
     {
@@ -74,7 +74,7 @@ class AdminAuthorController extends AbstractController
     }
 
     /**
-     * @Route("/admin/author/supprimer/{id}", name="app_admin_adminAuthor_delete")
+     * @Route("/admin/auteurs/supprimer/{id}", name="app_admin_adminAuthor_delete")
      */
     public function delete(Author $author, EntityManagerInterface $manager): Response
     {

@@ -20,7 +20,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminCategoryController extends AbstractController
 {
     /**
-     * @Route("/admin/category/liste", name="app_admin_adminCategory_list")
+     * @Route("/admin/categories", name="app_admin_adminCategory_list")
      */
     public function list(CategoryRepository $repository): Response
     {
@@ -33,7 +33,7 @@ class AdminCategoryController extends AbstractController
     }
 
     /**
-     * @Route("/admin/category/creer", name="app_admin_adminCategory_create")
+     * @Route("/admin/categories/creer", name="app_admin_adminCategory_create")
      */
     public function create(Request $request, EntityManagerInterface $manager): Response
     {
@@ -54,7 +54,7 @@ class AdminCategoryController extends AbstractController
     }
 
     /**
-     * @Route("/admin/category/modifier/{id}", name="app_admin_adminCategory_update")
+     * @Route("/admin/categories/modifier/{id}", name="app_admin_adminCategory_update")
      */
     public function update(Category $category, EntityManagerInterface $manager, Request $request): Response
     {
@@ -74,7 +74,7 @@ class AdminCategoryController extends AbstractController
     }
 
     /**
-     * @Route("/admin/category/supprimer/{id}", name="app_admin_adminCategory_delete")
+     * @Route("/admin/categories/supprimer/{id}", name="app_admin_adminCategory_delete")
      */
     public function delete(Category $category, EntityManagerInterface $manager): Response
     {
