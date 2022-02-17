@@ -44,6 +44,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Commande::class)]
     private $commandes;
 
+    #[ORM\OneToOne(targetEntity: self::class, cascade: ['persist', 'remove'])]
+    private $panier;
+
     public function __construct()
     {
         $this->addresses = new ArrayCollection();
@@ -220,7 +223,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->commandes->contains($commande)) {
             $this->commandes[] = $commande;
-            $commande->setUsers($this);
+            $commande->setUser($this);
         }
 
         return $this;
@@ -230,10 +233,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->commandes->removeElement($commande)) {
             // set the owning side to null (unless already changed)
-            if ($commande->getUsers() === $this) {
-                $commande->setUsers(null);
+            if ($commande->getUser() === $this) {
+                $commande->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPanier(): ?self
+    {
+        return $this->panier;
+    }
+
+    public function setPanier(?self $panier): self
+    {
+        $this->panier = $panier;
 
         return $this;
     }

@@ -42,8 +42,7 @@ class UserType extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider'
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

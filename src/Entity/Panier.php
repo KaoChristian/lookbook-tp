@@ -19,7 +19,7 @@ class Panier
     private $books;
 
     #[ORM\OneToOne(targetEntity: User::class, cascade: ['persist', 'remove'])]
-    private $users;
+    private $user;
 
     public function __construct()
     {
@@ -57,12 +57,12 @@ class Panier
 
     public function getUsers(): ?User
     {
-        return $this->users;
+        return $this->user;
     }
 
-    public function setUsers(?User $users): self
+    public function setUsers(?User $user): self
     {
-        $this->users = $users;
+        $this->user = $user;
 
         return $this;
     }

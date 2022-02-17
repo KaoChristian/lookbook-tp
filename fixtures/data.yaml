@@ -27,27 +27,27 @@ App\Entity\Address:
     users: ["@admin"]
 
 App\Entity\Author:
-  author{1..10}:
+  author{1..20}:
     name: "<word()>"
-    description: "<sentence(2)>"
+    description: "<sentence(1)>"
 
 App\Entity\Publisher:
   publisher{1..10}:
     title: "<word()>"
-    description: "<sentence(2)>"
+    description: "<sentence(1)>"
 
 App\Entity\Category:
   category{1..5}:
     title: "<word()>"
 
 App\Entity\Book:
-  book{1..20}:
+  book{1..100}:
     title: "<word()>"
     authors: "<numberBetween(1, 2)>x @author*"
     publisher: "@publisher*"
     price: "<randomFloat(2, 0, 999)>"
     images: "<imageUrl(150, 150, 'book')>"
-    description: "<paragraph()>"
+    description: "<sentence(1)>"
     publishDate: "<date_create()>"
     isbn: "<isbn13()>"
     categories: "<numberBetween(1, 2)>x @category*"
@@ -55,10 +55,6 @@ App\Entity\Book:
     language: "<word()>"
     bookSize: "<word()>"
 
-App\Entity\Panier:
-  panier{1..10}:
-    # users: "@user"
-    books: "<numberBetween(1, 2)>x @book*"
 
 App\Entity\Commande:
   commande{1..10}:
@@ -68,5 +64,3 @@ App\Entity\Commande:
     deliveryDate: "<date_create()>"
     address: "@Address1"
     price: "<randomFloat(2, 0, 999)>"
-
-

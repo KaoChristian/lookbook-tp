@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <table>
+        <tr>
+            <th>Nom auteur</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+        {% for author in authors %}
+            <tr>
+                <td>{{ author.name}}</td>
+                <td>{{ author.description}}</td>
+                <td>
+                <button><a href="{{ path('app_front_author_show', 
+                {'id': author.id})}}">Voir en detail</a></button>
+                </td>
+            </tr>
+        {% endfor %}
+        
+    </table>
+{% endblock %}
+
