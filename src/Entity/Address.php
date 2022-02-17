@@ -33,9 +33,13 @@ class Address
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'addresses')]
     private $users;
 
+    #[ORM\OneToMany(mappedBy: 'address', targetEntity: Commande::class)]
+    private $commandes;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->commandes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -123,6 +127,36 @@ class Address
     public function removeUser(User $user): self
     {
         $this->users->removeElement($user);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Commande[]
+     */
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(Commande $commande): self
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes[] = $commande;
+            $commande->setAddress($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commande $commande): self
+    {
+        if ($this->commandes->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getAddress() === $this) {
+                $commande->setAddress(null);
+            }
+        }
 
         return $this;
     }

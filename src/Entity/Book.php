@@ -58,12 +58,16 @@ class Book
     #[ORM\ManyToMany(targetEntity: Panier::class, mappedBy: 'books')]
     private $paniers;
 
+    #[ORM\ManyToMany(targetEntity: Commande::class, mappedBy: 'books')]
+    private $commandes;
+
     public function __construct()
     {
         $this->authors = new ArrayCollection();
         $this->categories = new ArrayCollection();
         $this->users = new ArrayCollection();
         $this->paniers = new ArrayCollection();
+        $this->commandes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -288,6 +292,33 @@ class Book
     {
         if ($this->paniers->removeElement($panier)) {
             $panier->removeBook($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Commande[]
+     */
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(Commande $commande): self
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes[] = $commande;
+            $commande->addBook($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commande $commande): self
+    {
+        if ($this->commandes->removeElement($commande)) {
+            $commande->removeBook($this);
         }
 
         return $this;

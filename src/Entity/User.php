@@ -41,10 +41,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Book::class, inversedBy: 'users')]
     private $books;
 
+    #[ORM\OneToMany(mappedBy: 'users', targetEntity: Commande::class)]
+    private $commandes;
+
     public function __construct()
     {
         $this->addresses = new ArrayCollection();
         $this->books = new ArrayCollection();
+        $this->commandes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -200,6 +204,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeBook(Book $book): self
     {
         $this->books->removeElement($book);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Commande[]
+     */
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(Commande $commande): self
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes[] = $commande;
+            $commande->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commande $commande): self
+    {
+        if ($this->commandes->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getUsers() === $this) {
+                $commande->setUsers(null);
+            }
+        }
 
         return $this;
     }

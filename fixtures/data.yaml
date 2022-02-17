@@ -54,3 +54,19 @@ App\Entity\Book:
     pageAmount: "<numberBetween(5, 1000)>"
     language: "<word()>"
     bookSize: "<word()>"
+
+App\Entity\Panier:
+  panier{1..10}:
+    # users: "@user"
+    books: "<numberBetween(1, 2)>x @book*"
+
+App\Entity\Commande:
+  commande{1..10}:
+    books: "<numberBetween(1, 2)>x @book*"
+    user: "@user"
+    orderDate: "<date_create()>"
+    deliveryDate: "<date_create()>"
+    address: "@Address1"
+    price: "<randomFloat(2, 0, 999)>"
+
+
