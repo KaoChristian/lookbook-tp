@@ -22,11 +22,11 @@
 
     <hr>
     <h3>Mes Livres</h3>
-    <button><a {# href="{{ path('') }}" #}>Ajouter un livre</a></button>
+    <button><a href="{{ path('app_front_user_createBook') }}">Ajouter un livre</a></button>
     <table>
         <tr>
             <th>Titre</th>
-            <th>Auteur</th>
+            {# <th>Auteur</th> #}
             <th>Editeur</th>
             <th>Prix</th>
             <th>Actions</th>
@@ -35,12 +35,12 @@
         {% for book in user.books %}
         <tr>
             <td>{{ book.title }}</td>
-            <td>{{ book.author }}</td>
-            <td>{{ book.publisher }}</td>
+            {# <td>{{ book.author }}</td> #}
+            <td>{{ book.publisher.title }}</td>
             <td>{{ book.price }}</td>
             <td>
-                <button><a {# href="{{ path('', {'id':book.id}) }}" #}>Modifier</a></button>
-                <button><a {# href="{{ path('', {'id':book.id}) }}" #}>Supprimer</a></button> 
+                <button><a href="{{ path('app_front_user_updateBook', {'id':book.id}) }}">Modifier</a></button>
+                <button><a href="{{ path('app_front_user_deleteBook', {'id':book.id}) }}">Supprimer</a></button> 
             </td>
         </tr>
         {% endfor %}

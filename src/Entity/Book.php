@@ -52,8 +52,9 @@ class Book
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $bookSize;
 
-    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'books')]
-    private $users;
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'books')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $reseller;
 
     public function __construct()
     {
@@ -235,30 +236,16 @@ class Book
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
+    public function getReseller(): ?User
     {
-        return $this->users;
+        return $this->reseller;
     }
 
-    public function addUser(User $user): self
+    public function setReseller(?User $reseller): self
     {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->addBook($this);
-        }
+        $this->reseller = $reseller;
 
         return $this;
     }
 
-    public function removeUser(User $user): self
-    {
-        if ($this->users->removeElement($user)) {
-            $user->removeBook($this);
-        }
-
-        return $this;
-    }
 }
