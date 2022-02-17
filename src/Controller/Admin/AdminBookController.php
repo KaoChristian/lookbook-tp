@@ -20,7 +20,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminBookController extends AbstractController
 {
     /**
-     * @Route("/admin/book/liste", name="app_admin_adminBook_list")
+     * @Route("/admin/livres/liste", name="app_admin_adminBook_list")
      */
     public function list(BookRepository $repository): Response
     {
@@ -33,7 +33,7 @@ class AdminBookController extends AbstractController
     }
 
     /**
-     * @Route("/admin/book/creer", name="app_admin_adminBook_create")
+     * @Route("/admin/livres/creer", name="app_admin_adminBook_create")
      */
     public function create(Request $request, EntityManagerInterface $manager): Response
     {
@@ -54,7 +54,7 @@ class AdminBookController extends AbstractController
     }
 
     /**
-     * @Route("/admin/book/modifier/{id}", name="app_admin_adminBook_update")
+     * @Route("/admin/livres/modifier/{id}", name="app_admin_adminBook_update")
      */
     public function update(Book $book, EntityManagerInterface $manager, Request $request): Response
     {
@@ -74,7 +74,7 @@ class AdminBookController extends AbstractController
     }
 
     /**
-     * @Route("/admin/book/supprimer/{id}", name="app_admin_adminBook_delete")
+     * @Route("/admin/livres/supprimer/{id}", name="app_admin_adminBook_delete")
      */
     public function delete(Book $book, EntityManagerInterface $manager): Response
     {

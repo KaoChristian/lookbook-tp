@@ -20,7 +20,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminAddressController extends AbstractController
 {
     /**
-     * @Route("/admin/address/liste", name="app_admin_adminAddress_list")
+     * @Route("/admin/adresses/", name="app_admin_adminAddress_list")
      */
     public function list(AddressRepository $repository): Response
     {
@@ -33,7 +33,7 @@ class AdminAddressController extends AbstractController
     }
 
     /**
-     * @Route("/admin/address/creer", name="app_admin_adminAddress_create")
+     * @Route("/admin/adresses/creer", name="app_admin_adminAddress_create")
      */
     public function create(Request $request, EntityManagerInterface $manager): Response
     {
@@ -54,7 +54,7 @@ class AdminAddressController extends AbstractController
     }
 
     /**
-     * @Route("/admin/address/modifier/{id}", name="app_admin_adminAddress_update")
+     * @Route("/admin/adresses/modifier/{id}", name="app_admin_adminAddress_update")
      */
     public function update(Address $address, EntityManagerInterface $manager, Request $request): Response
     {
@@ -74,7 +74,7 @@ class AdminAddressController extends AbstractController
     }
 
     /**
-     * @Route("/admin/address/supprimer/{id}", name="app_admin_adminAddress_delete")
+     * @Route("/admin/adresses/supprimer/{id}", name="app_admin_adminAddress_delete")
      */
     public function delete(Address $address, EntityManagerInterface $manager): Response
     {

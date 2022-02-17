@@ -6,35 +6,29 @@
 
 <div>
     <h2>
-        Utilisateur
+        Utilisateurs1
     </h2>
     <div>
-        <button>
+        <button><a href="{{ path('app_admin_adminUser_create')}}">
             Ajouter
-        </button>
-        <button>
-            List
-        </button>
-        <button>
-            Supprimer
-        </button>
+        </a></button>
+        <button><a href="{{ path('app_admin_adminUser_list')}}">
+            Liste
+        </a></button>
     </div>
 </div>
 
 <div>
     <h2>
-        Addresse
+        Addresses
     </h2>
     <div>
-        <button>
+        <button><a href="{{ path('app_admin_adminAddress_create')}}">
             Ajouter
-        </button>
-        <button>
-            List
-        </button>
-        <button>
-            Supprimer
-        </button>
+        </a></button>
+        <button><a href="{{ path('app_admin_adminAddress_list')}}">
+            Liste
+        </a></button>
     </div>
 </div>
 
@@ -43,15 +37,12 @@
         Auteurs
     </h2>
     <div>
-        <button>
+        <button><a href="{{ path('app_admin_adminAuthor_create')}}">
             Ajouter
-        </button>
-        <button>
-            List
-        </button>
-        <button>
-            Supprimer
-        </button>
+        </a></button>
+        <button><a href="{{ path('app_admin_adminAuthor_list')}}">
+            Liste
+        </a></button>
     </div>
 </div>
 
@@ -60,32 +51,26 @@
         Maison d'éditions
     </h2>
     <div>
-        <button>
+        <button><a href="{{ path('app_admin_adminPublisher_create')}}">
             Ajouter
-        </button>
-        <button>
-            List
-        </button>
-        <button>
-            Supprimer
-        </button>
+        </a></button>
+        <button><a href="{{ path('app_admin_adminPublisher_list')}}">
+            Liste
+        </a></button>
     </div>
 </div>
 
 <div>
     <h2>
-        catégories
+        Catégories
     </h2>
     <div>
-        <button>
+        <button><a href="{{ path('app_admin_adminCategory_create')}}">
             Ajouter
-        </button>
-        <button>
-            List
-        </button>
-        <button>
-            Supprimer
-        </button>
+        </a></button>
+        <button><a href="{{ path('app_admin_adminCategory_list')}}">
+            Liste
+        </a></button>
     </div>
 </div>
 
@@ -94,32 +79,27 @@
         Livres
     </h2>
     <div>
-        <button>
+        <button><a href="{{ path('app_admin_adminBook_create')}}">
             Ajouter
-        </button>
-        <button>
-            List
-        </button>
-        <button>
-            Supprimer
-        </button>
+        </a></button>
+        <button><a href="{{ path('app_admin_adminBook_list')}}">
+            Liste
+        </a></button>
     </div>
 </div>
 
-<div>
+{# <div>
     <h2>
         Commandes
     </h2>
     <div>
-        <button>
+        <button><a href="{{ path('app_admin_adminOrder_create')}}">
             Ajouter
-        </button>
-        <button>
-            List
-        </button>
-        <button>
-            Supprimer
-        </button>
+        </a></button>
+        <button><a href="{{ path('app_admin_adminOrder_list')}}">
+            Liste
+        </a></button>
     </div>
-</div>
+</div> #}
+
 {% endblock %}
