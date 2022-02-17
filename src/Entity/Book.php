@@ -55,11 +55,15 @@ class Book
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'books')]
     private $users;
 
+    #[ORM\ManyToMany(targetEntity: Panier::class, mappedBy: 'books')]
+    private $paniers;
+
     public function __construct()
     {
         $this->authors = new ArrayCollection();
         $this->categories = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->paniers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -257,6 +261,33 @@ class Book
     {
         if ($this->users->removeElement($user)) {
             $user->removeBook($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Panier[]
+     */
+    public function getPaniers(): Collection
+    {
+        return $this->paniers;
+    }
+
+    public function addPanier(Panier $panier): self
+    {
+        if (!$this->paniers->contains($panier)) {
+            $this->paniers[] = $panier;
+            $panier->addBook($this);
+        }
+
+        return $this;
+    }
+
+    public function removePanier(Panier $panier): self
+    {
+        if ($this->paniers->removeElement($panier)) {
+            $panier->removeBook($this);
         }
 
         return $this;
