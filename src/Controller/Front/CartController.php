@@ -22,11 +22,13 @@ class CartController extends AbstractController
     /**
      * @Route("/mon-panier", name="app_front_cart_cart")
      */
-    public function cart(User $user): Response
+    public function cart(UserRepository $user): Response
     {
+        
+        $cart = $user->getCart();
 
         return $this->render("Front/Front/cart.html.twig", [
-            "user" => $user->getCart()
+            "cart" => $cart
         ]);
     }
 

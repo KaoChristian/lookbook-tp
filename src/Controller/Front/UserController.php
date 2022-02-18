@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Front;
 
 use App\Entity\Book;
+use App\Entity\Cart;
 use App\Entity\User;
 use App\Form\BookType;
 use App\Form\SubscriptionType;
@@ -27,13 +28,15 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
+            
+            $cart = new Cart();
 
             $user = $form->getData();
 
             $user->setPassword($crypter->hashPassword(
                 $user,
-                $user->getPassword()
-            ));
+                $user->getPassword(),
+            ))->setCart($cart);
 
             $manager->persist($user);
             $manager->flush();
