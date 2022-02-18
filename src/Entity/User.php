@@ -217,7 +217,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-<<<<<<< HEAD
     /**
      * @return Collection|Commande[]
      */
@@ -259,6 +258,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-=======
->>>>>>> userFront
 }
