@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Waiting+for+the+Sunrise&display=swap');
+/**** GLOBAL *****/
+*,
+*::after,
+*::before {
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+    color:#fff;
+}
+
+ul,li {
+    list-style-type: none;
+}
+
+body {
+    font-family: Gilroy, poppins, roboto, sans-serif;
+}
+
+/***** HEADER *****/
+
+header {
+    width: 100%;
+    min-height: 15vh;
+    padding: .3rem 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    background-color: rgb(31, 17, 85);
+}
+
+header nav {
+    min-width: 400px;
+}
+
+header nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    color:#fff
+}
+
+#logo {
+    color:burlywood;
+    font-family: 'Waiting for the Sunrise', cursive;
+}
+
+/***** HEADER NAV LINKS *****/
+
+.link {
+    cursor: pointer;
+    font-size: 18px;
+    position: relative;
+    white-space: nowrap;
+    color: #fff;
+}
+
+.link::before,
+.link::after {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    top: 100%;
+    left: 0;
+    pointer-events: none;
+}
+
+.link::before {
+    content: '';
+    /* show by default */
+}
+
+.link--underline::before {
+    transform-origin: 100% 50%;
+    transform: scale3d(0, 1, 1);
+    transition: transform 0.3s;
+}
+
+.link--underline:hover::before {
+    transform-origin: 0% 50%;
+    transform: scale3d(1, 1, 1);
+}
+
+/***** ADMIN DASHBOARD *****/
+
+.admin_header{
+    background-color: #e0e0e0;
+}
+
+.admin_header #logo {
+    color: #111;
+}
+
+.admin_header a,.admin_header li {
+    color: #111;
+}
+/***** LEFT MENU *****/
+
+#admin {
+    display: flex;
+    flex-direction: row;
+}
+
+.hide {
+    display:none
+}
+
+#admin_nav {
+    background-color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+    height: 100vh;
+    padding: 3rem .5rem;
+    align-content: center;
+    align-items: flex-start;
+    /* justify-content: space-evenly; */
+}
+
+#admin_nav h2 {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 3rem;
+}
+
+#admin_dash_content {
+    padding: 5rem; 
+}
+
+#admin_dash_content button a{
+    color:#fff
+}
+
+#admin_dash_content button {
+    border: none;
+    outline: none;
+    background-color: #111;
+    font-size: 1rem;
+    padding: .5rem .7rem;
+    border-radius: .5em;
+}
+
+#admin_content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;   
+}

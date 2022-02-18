@@ -1,14 +1,34 @@
 {% extends "base.html.twig" %}
 
-{% block body %}
 
-<h1>Bienvenue sur notre page Admin</h1>
+{% block menu %}
+                <header class="admin_header">
+                    <h1 id="logo">LookBook</h1>
+                    <nav>
+                        <ul>
+                            <li class="link link--underline">
+                                <a href="{{ path('app_front_front_home') }}">
+                                Voir le site
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('app_login') }}">
+                                Connexion <i class="far fa-user"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+            {% endblock %}   
+{% block adminDash %}
 
+<main id="admin">
+<section id="admin_nav">
 <div>
-    <h2>
+    <h2 id="">
         Utilisateurs
     </h2>
-    <div>
+    <div class="hide">
         <button><a href="{{ path('app_admin_adminUser_create')}}">
             Ajouter
         </a></button>
@@ -22,7 +42,7 @@
     <h2>
         Addresses
     </h2>
-    <div>
+    <div class="hide">
         <button><a href="{{ path('app_admin_adminAddress_create')}}">
             Ajouter
         </a></button>
@@ -36,7 +56,7 @@
     <h2>
         Auteurs
     </h2>
-    <div>
+    <div class="hide">
         <button><a href="{{ path('app_admin_adminAuthor_create')}}">
             Ajouter
         </a></button>
@@ -50,7 +70,7 @@
     <h2>
         Maison d'éditions
     </h2>
-    <div>
+    <div class="hide">
         <button><a href="{{ path('app_admin_adminPublisher_create')}}">
             Ajouter
         </a></button>
@@ -64,7 +84,7 @@
     <h2>
         Catégories
     </h2>
-    <div>
+    <div class="hide">
         <button><a href="{{ path('app_admin_adminCategory_create')}}">
             Ajouter
         </a></button>
@@ -78,7 +98,7 @@
     <h2>
         Livres
     </h2>
-    <div>
+    <div class="hide">
         <button><a href="{{ path('app_admin_adminBook_create')}}">
             Ajouter
         </a></button>
@@ -87,7 +107,19 @@
         </a></button>
     </div>
 </div>
-
+</section>
+<section id="admin_dash_content">
+    <div class="admin_content_users admin_content">
+    <h1>Gestion des Utilisateurs</h1>
+        <button><a href="{{ path('app_admin_adminUser_create')}}">
+            Ajouter
+        </a></button>
+        <button><a href="{{ path('app_admin_adminUser_list')}}">
+            Liste
+        </a></button>
+    </div>
+</secion>
+</main>
 {# <div>
     <h2>
         Commandes
