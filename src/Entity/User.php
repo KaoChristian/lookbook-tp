@@ -44,8 +44,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Commande::class)]
     private $commandes;
 
-    #[ORM\OneToOne(targetEntity: self::class, cascade: ['persist', 'remove'])]
-    private $panier;
+    #[ORM\OneToOne(mappedBy: 'user', targetEntity: Cart::class, cascade: ['persist', 'remove'])]
+    private $cart;
 
     public function __construct()
     {
@@ -247,15 +247,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPanier(): ?self
+    public function getCart(): ?Cart
     {
-        return $this->panier;
+        return $this->cart;
     }
 
-    public function setPanier(?self $panier): self
+    public function setCart(Cart $cart): self
     {
-        $this->panier = $panier;
+        // set the owning side of the relation if necessary
+        if ($cart->getUser() !== $this) {
+            $cart->setUser($this);
+        }
+
+        $this->cart = $cart;
 
         return $this;
     }
+
 }

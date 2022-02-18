@@ -56,19 +56,19 @@ class Book
     #[ORM\JoinColumn(nullable: false)]
     private $reseller;
 
-    #[ORM\ManyToMany(targetEntity: Panier::class, mappedBy: 'books')]
-    private $paniers;
-
     #[ORM\ManyToMany(targetEntity: Commande::class, mappedBy: 'books')]
     private $commandes;
+
+    #[ORM\ManyToMany(targetEntity: Cart::class, mappedBy: 'books')]
+    private $carts;
 
     public function __construct()
     {
         $this->authors = new ArrayCollection();
         $this->categories = new ArrayCollection();
         $this->users = new ArrayCollection();
-        $this->paniers = new ArrayCollection();
         $this->commandes = new ArrayCollection();
+        $this->carts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -265,32 +265,6 @@ class Book
         return $this;
     }
 
-    /**
-     * @return Collection|Panier[]
-     */
-    public function getPaniers(): Collection
-    {
-        return $this->paniers;
-    }
-
-    public function addPanier(Panier $panier): self
-    {
-        if (!$this->paniers->contains($panier)) {
-            $this->paniers[] = $panier;
-            $panier->addBook($this);
-        }
-
-        return $this;
-    }
-
-    public function removePanier(Panier $panier): self
-    {
-        if ($this->paniers->removeElement($panier)) {
-            $panier->removeBook($this);
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection|Commande[]
@@ -314,6 +288,33 @@ class Book
     {
         if ($this->commandes->removeElement($commande)) {
             $commande->removeBook($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Cart[]
+     */
+    public function getCarts(): Collection
+    {
+        return $this->carts;
+    }
+
+    public function addCart(Cart $cart): self
+    {
+        if (!$this->carts->contains($cart)) {
+            $this->carts[] = $cart;
+            $cart->addBook($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCart(Cart $cart): self
+    {
+        if ($this->carts->removeElement($cart)) {
+            $cart->removeBook($this);
         }
 
         return $this;

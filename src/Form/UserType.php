@@ -27,11 +27,12 @@ class UserType extends AbstractType
             ->add('userName', TextType::class, [
                 'label' => 'Pseudo :'
             ])
-            ->add('addresses', EntityType::class, [
-                'class' => Address::class,
-                'label' => 'Adresse :',
-                'required' => false
-            ])
+            // ->add('addresses', EntityType::class, [
+            //     'class' => Address::class,
+            //     'label' => 'Adresse :',
+            //     'multiple' => true,
+            //     'required' => false
+            // ])
             ->add('firstName', TextType::class, [
                 'label' => 'Prénom :',
                 'required' => false

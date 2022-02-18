@@ -17,7 +17,7 @@ class FrontController extends AbstractController
      * @Route("/", name="app_front_front_home")
      */
     public function home(BookRepository $repository,): Response
-    {
+    {   
         return $this->render('Front/Front/home.html.twig', [
             "books" => $repository->findLastTwentyFiveBooks()
         ]);

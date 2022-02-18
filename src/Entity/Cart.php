@@ -2,23 +2,24 @@
 
 namespace App\Entity;
 
-use App\Repository\PanierRepository;
+use App\Repository\CartRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: PanierRepository::class)]
-class Panier
+#[ORM\Entity(repositoryClass: CartRepository::class)]
+class Cart
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\ManyToMany(targetEntity: Book::class, inversedBy: 'paniers')]
+    #[ORM\ManyToMany(targetEntity: Book::class, inversedBy: 'carts')]
     private $books;
 
-    #[ORM\OneToOne(targetEntity: User::class, cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'cart', targetEntity: User::class, cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
     private $user;
 
     public function __construct()
@@ -55,12 +56,12 @@ class Panier
         return $this;
     }
 
-    public function getUsers(): ?User
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUsers(?User $user): self
+    public function setUser(User $user): self
     {
         $this->user = $user;
 
