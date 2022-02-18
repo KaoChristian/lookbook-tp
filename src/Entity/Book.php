@@ -256,7 +256,6 @@ class Book
         return $this;
     }
 
-<<<<<<< HEAD
     public function removeUser(User $user): self
     {
         if ($this->users->removeElement($user)) {
@@ -319,6 +318,4 @@ class Book
 
         return $this;
     }
-=======
->>>>>>> userFront
 }
