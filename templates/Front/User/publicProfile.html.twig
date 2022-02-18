@@ -1,27 +1,31 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <h1> Accueil </h1>
 
-        <table>
+    <h2>Profil</h2>
+    <br>
+    <h3>Informations</h3>
+    <ul>
+        <li>Pseudo : {{ user.userName }}</li>
+    </ul>
+
+    <h3>Livres</h3>
+    <table>
         <tr>
             <th>Titre</th>
             {# <th>Auteur</th> #}
             <th>Editeur</th>
             <th>Prix</th>
-            <th>Images</th>
-            <th>Cart</th>
             </tr>
         
-        {% for book in books %}
+        {% for book in user.books %}
         <tr>
             <td>{{ book.title }}</td>
             {# <td>{{ book.author }}</td> #}
             <td>{{ book.publisher.title }}</td>
             <td>{{ book.price }}</td>
-            <td><img src="{{ book.images }}"></td>
-            <td><a href="#">Ajouter au panier</a></td>
         </tr>
         {% endfor %}
     </table>
+    
 {% endblock %}

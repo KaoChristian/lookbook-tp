@@ -23,7 +23,7 @@ class BookRepository extends ServiceEntityRepository
     //  * @return Book[] Returns an array of Book objects
     //  */
     
-        public function findTwentyFiveBooks(string $auteur): array
+    public function findTwentyFiveBooks(string $auteur): array
     {
         return $this->createQueryBuilder('book')
             ->leftJoin('book.authors', 'author')
@@ -34,6 +34,15 @@ class BookRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findLastTwentyFiveBooks(): array
+    {
+        return $this->createQueryBuilder('book')
+            ->orderBy('book.id', 'DESC')
+            ->setMaxResults(25)
+            ->getQuery()
+            ->getResult();
+    }    
 
     /*
     public function findOneBySomeField($value): ?Book

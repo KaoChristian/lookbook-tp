@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Front;
 
 use App\Entity\Book;
+use App\Entity\User;
 use App\Form\BookType;
 use App\Form\SubscriptionType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -63,6 +64,17 @@ class UserController extends AbstractController
             'user' => $user,
         ]);
     }
+
+    /**
+     * @Route("/profil/{id}", name="app_front_user_publicProfile")
+     */
+    public function publicProfile(User $user): Response
+    {
+        return $this->render("Front/User/publicProfile.html.twig", [
+            "user" => $user,
+        ]);
+    }
+
 
     /**
      * @IsGranted("ROLE_USER")
