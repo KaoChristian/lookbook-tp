@@ -38,7 +38,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $lastName;
 
-    #[ORM\ManyToMany(targetEntity: Book::class, inversedBy: 'users')]
+    #[ORM\OneToMany(mappedBy: 'reseller', targetEntity: Book::class, orphanRemoval: true)]
     private $books;
 
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Commande::class)]
@@ -199,6 +199,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->books->contains($book)) {
             $this->books[] = $book;
+            $book->setReseller($this);
         }
 
         return $this;
@@ -206,11 +207,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function removeBook(Book $book): self
     {
-        $this->books->removeElement($book);
+        if ($this->books->removeElement($book)) {
+            // set the owning side to null (unless already changed)
+            if ($book->getReseller() === $this) {
+                $book->setReseller(null);
+            }
+        }
 
         return $this;
     }
 
+<<<<<<< HEAD
     /**
      * @return Collection|Commande[]
      */
@@ -252,4 +259,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+=======
+>>>>>>> userFront
 }

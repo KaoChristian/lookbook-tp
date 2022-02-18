@@ -1,14 +1,36 @@
 App\Entity\User:
-  user:
-    email: user@mail.com
-    roles: ["ROLE_USER"]
-    # password : password
-    password: \$2y\$13\$4nFdXU0byci3BWK1YwEopOrkJHJ0ShdIq9B9fmucjiL5dM9cy15Wy
   admin:
     email: admin@mail.com
     roles: ["ROLE_ADMIN"]
-    # password : password
+    #password : password
     password: \$2y\$13\$4nFdXU0byci3BWK1YwEopOrkJHJ0ShdIq9B9fmucjiL5dM9cy15Wy
+    userName: "Admin"
+    firstName: "Admin"
+    lastName: "Admin"
+  user:
+    email: user@mail.com
+    roles: ["ROLE_USER"]
+    #password : password
+    password: \$2y\$13\$4nFdXU0byci3BWK1YwEopOrkJHJ0ShdIq9B9fmucjiL5dM9cy15Wy
+    userName: "User"
+    firstName: "User"
+    lastName: "User"
+  user1:
+    email: truc@ailleurs.com
+    roles: ["ROLE_USER"]
+    #password = truc
+    password: \$2y\$13\$P9sXt6r.IwiKqsY.3jKhDuNknAqVK3Co3KN/P8yMeT1SlWIbdYIG. 
+    userName: "Truc"
+    firstName: "Truc"
+    lastName: "Muche"
+    books: "<numberBetween(1, 2)>x @book*"
+  users{1..10}:
+    email: "<email()>"
+    roles: ["ROLE_USER"]
+    password: "<password()>"
+    userName: "<word()>"
+    firstName: "<firstName()>"
+    lastName: "<lastName()>"
 
 App\Entity\Address:
   Address1:
@@ -17,14 +39,14 @@ App\Entity\Address:
     street: "Allee de voila"
     number: 01
     supplement: "En haut tu vois de quoi je parle"
-    users: ["@user"]
+    users: ["@user1"]
   Address2:
     postCode: 75000
     city: "Paris"
     street: "Allee de ici"
     number: 87
     supplement: "Appartement 7"
-    users: ["@admin"]
+    users: ["@user1"]
 
 App\Entity\Author:
   author{1..20}:
@@ -43,11 +65,12 @@ App\Entity\Category:
 App\Entity\Book:
   book{1..100}:
     title: "<word()>"
+    reseller: "@user*"
     authors: "<numberBetween(1, 2)>x @author*"
     publisher: "@publisher*"
     price: "<randomFloat(2, 0, 999)>"
     images: "<imageUrl(150, 150, 'book')>"
-    description: "<sentence(1)>"
+    description: "<sentence(2)>"
     publishDate: "<date_create()>"
     isbn: "<isbn13()>"
     categories: "<numberBetween(1, 2)>x @category*"
